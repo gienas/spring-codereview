@@ -34,5 +34,5 @@ public class Customer {
 	
 	@OneToMany(mappedBy = "customer")
 	private Set<Item> items;
-
+	
 }

@@ -3,34 +3,55 @@ package pl.ene.springbootrestjpa.controllers;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import pl.ene.springbootrestjpa.domain.Customer;
-import pl.ene.springbootrestjpa.repository.UserRepository;
+import pl.ene.springbootrestjpa.repository.CustomerManualRespository;
+import pl.ene.springbootrestjpa.repository.CustomerRepository;
 
 @RestController
 public class UserController {
 
-	private UserRepository userRepository;
+	private CustomerRepository customerRepository;
+	private CustomerManualRespository customerManualRespository;
 	
-	public UserController(UserRepository userRepository) {
+	
+	public UserController(CustomerRepository userRepository, CustomerManualRespository customerManualRespository) {
 		// TODO Auto-generated constructor stub
-		this.userRepository = userRepository;
+		this.customerRepository = userRepository;
+		this.customerManualRespository = customerManualRespository;
 	}
 	
-	@RequestMapping("/user/{name}")
+	@GetMapping("/user/{name}")
 	Customer getUser(@PathVariable(name = "name") String name) {
 		//TODO implementation
 		return null;
 	}
 
-	@RequestMapping("/users")
+	@GetMapping("/users")
 	public List<Customer> users() {
 		List<Customer> result = new ArrayList<>();
-		userRepository.findAll().forEach(result::add);
+		customerRepository.findAll().forEach(result::add);
 		return result;
 	}
 
+	@GetMapping("/find")
+	public List<Customer> find( @RequestParam String name) {
+		List<Customer> result = new ArrayList<>();
+		customerRepository.findByNameStartingWith(name).forEach(result::add);
+		return result;
+	}
+
+	@GetMapping("/findByName")
+	public List<Customer> findByNAme( @RequestParam String name) {
+		List<Customer> result = new ArrayList<>();
+		customerManualRespository.getByName(name).forEach(result::add);
+		return result;
+	}
+
+	
+	
 }

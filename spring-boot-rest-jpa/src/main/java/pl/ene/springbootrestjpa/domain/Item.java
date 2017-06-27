@@ -24,6 +24,7 @@ import lombok.Setter;
 public class Item {
 
 	public Item() {
+		//comment
 	}
 
 	@Id

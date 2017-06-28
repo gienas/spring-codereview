@@ -18,4 +18,5 @@ public class SpringBootRestJpaApplication {
 		
 	}
 	//ec1
+    //ec2
 }

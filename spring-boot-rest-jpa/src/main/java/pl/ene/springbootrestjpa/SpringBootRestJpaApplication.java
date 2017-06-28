@@ -17,5 +17,5 @@ public class SpringBootRestJpaApplication {
 		SpringApplication.run(SpringBootRestJpaApplication.class);
 		
 	}
-	//mc3
+	//ec1
 }

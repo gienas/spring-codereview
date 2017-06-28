@@ -6,8 +6,6 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class PersistenceConfig {
 
-//c1 bfix
-//c2 bfix
-
+//c1
 	
 }
